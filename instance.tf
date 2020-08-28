@@ -1,8 +1,8 @@
 resource "aws_lightsail_instance" "wireguard" {
-  name              = "Wireguard"
-  availability_zone = "us-east-1a"
-  blueprint_id      = "ubuntu_18_04"
-  bundle_id         = "micro_2_0"
+  name              = local.name
+  availability_zone = local.AZ
+  blueprint_id      = local.OS
+  bundle_id         = local
   key_pair_name     = aws_lightsail_key_pair.key.name
   depends_on        = [aws_lightsail_key_pair.key]
   provisioner "local-exec" {
