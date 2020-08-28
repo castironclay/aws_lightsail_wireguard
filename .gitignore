@@ -1,0 +1,5 @@
+.idea/
+id_rsa
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
