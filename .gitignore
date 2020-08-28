@@ -3,3 +3,6 @@ id_rsa
 .terraform/
 terraform.tfstate
 terraform.tfstate.backup
+/privatekey
+/publickey
+/.terraform.tfstate.lock.info

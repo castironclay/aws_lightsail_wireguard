@@ -1,2 +1,2 @@
 # aws_lightsail_wireguard
-Lightsail instance for wireguard vpn server
+Project to build Wireguard server on AWS Lightsail using Terraform
