@@ -2,7 +2,7 @@ resource "aws_lightsail_instance" "wireguard" {
   name              = local.name
   availability_zone = local.AZ
   blueprint_id      = local.OS
-  bundle_id         = local
+  bundle_id         = local.Size
   key_pair_name     = aws_lightsail_key_pair.key.name
   depends_on        = [aws_lightsail_key_pair.key]
   provisioner "local-exec" {

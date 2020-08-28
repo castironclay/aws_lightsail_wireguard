@@ -14,3 +14,7 @@ output "username" {
 output "port" {
   value = random_integer.wg_port.result
 }
+
+output "client_config" {
+  value = data.template_file.client_config.rendered
+}
