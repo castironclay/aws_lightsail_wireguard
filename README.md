@@ -17,7 +17,8 @@ Teardown the server and delete all files associated with build.<br/>
 `./destroy.sh`
 
 # Notes
-This project is intented to be ephemeral in nature and does not use Terraform remote state. Keep track of your terraform.tfstate file to ease in the cleanup later. 
+This project is intented to be ephemeral in nature and does not use Terraform remote state. Keep track of your terraform.tfstate file to ease in the cleanup later.<br/>
+Starting project idea. https://github.com/flypenguin/terraform-quickvpn-wireguard-ec2
 
 # Tools needed
 [Terraform](https://www.terraform.io/downloads.html)<br/>
