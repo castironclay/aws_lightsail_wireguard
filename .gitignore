@@ -6,3 +6,4 @@ terraform.tfstate.backup
 /privatekey
 /publickey
 /.terraform.tfstate.lock.info
+wg0-client.conf

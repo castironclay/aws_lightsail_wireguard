@@ -9,8 +9,16 @@ data "template_file" "client_config" {
   }
 }
 
-variable "SERVER_PRIVATEKEY" {}
-variable "SERVER_PUBLICKEY" {}
-variable "CLIENT_PRIVATEKEY" {}
-variable "CLIENT_PUBLICKEY" {}
+data "template_file" "cloud_init" {
+  template = file("${path.module}/source_files/config.sh")
 
+  vars = {
+    WG_PKEY               = var.SERVER_PRIVATEKEY
+    SERVER_LINK_IPADDRESS = "10.1.2.1"
+    LINK_NETMASK          = "24"
+    NET_PORT              = random_integer.wg_port.result
+    PEER_ALLOWED_IPS      = "10.2.1.2/32"
+    PEER_KEY              = var.CLIENT_PUBLICKEY
+    WG_NETWORK            = "10.1.2.0"
+  }
+}
