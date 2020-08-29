@@ -88,19 +88,17 @@ Address = $SERVER_LINK_IPADDRESS/$LINK_NETMASK
 ListenPort = $NET_PORT
 SaveConfig = false
 
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o $NET_IFACE -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o $NET_IFACE -j MASQUERADE
+
 [Peer]
 PublicKey = $PEER_KEY
 AllowedIPs = $PEER_ALLOWED_IPS
 EOF
 
-iptables -t nat -I POSTROUTING -o $NET_IFACE -j MASQUERADE
-iptables-save > /etc/iptables.conf
-
 touch /etc/rc.local
 chmod +x /etc/rc.local
 echo 'modprobe wireguard' >> /etc/rc.local
-echo 'iptables-restore < /etc/iptables.conf' >> /etc/rc.local
-systemctl start wg-quick@wg0
 
 # start wireguard service
 sysctl -w net.ipv4.ip_forward=1
