@@ -10,7 +10,7 @@ Install AWSCLI and use `aws configure` to setup your local credentials. This pro
 ## Create Server
 Build the server and output your wg0-client.conf to your current directory.<br/>
 `./deploy.sh`<br/>
-You'll be left with your wg0-client.conf file to connect to your server. Any init script runs on the server and a reboot occurs. After the reboot you can connect. I usually start with a `watch -n 1 nc -nvvz ip port` and wait until the reboot occurs and the netcat starts to succeed. <br/>
+You'll be left with your wg0-client.conf file to connect to your server. An init script runs on the server after deployment and a reboot occurs. After the reboot you can connect. I usually, after deployment, start with a `watch -n 1 nc -nvvz ip port` and wait until the reboot occurs and the netcat starts to succeed. <br/>
 
 ## Destroy Server
 Teardown the server and delete all files associated with build.<br/>
