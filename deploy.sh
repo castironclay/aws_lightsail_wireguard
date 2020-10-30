@@ -15,6 +15,7 @@ export TF_VAR_CLIENT_PRIVATEKEY=$(cat client_privatekey)
 export TF_VAR_CLIENT_PUBLICKEY=$(cat client_publickey)
 
 # Deploy infrastructure
+terraform init
 terraform apply -auto-approve
 terraform output private_key > id_rsa
 chmod u+x id_rsa
