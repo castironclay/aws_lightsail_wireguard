@@ -4,7 +4,9 @@ provider "null" {}
 provider "tls" {}
 
 provider "aws" {
-  region = "us-east-1"
+  region = "us-west-2"
+  shared_credentials_file = "~/.aws/credentials"
+	profile = "terraform"
 }
 
 resource "random_integer" "wg_port" {
@@ -13,9 +15,9 @@ resource "random_integer" "wg_port" {
 }
 
 locals {
-  name    = "Wireguard"
-  AZ      = "us-east-1a"
-  OS      = "ubuntu_18_04"
-  Size    = "micro_2_0"
-  KeySize = 4096
+  name     = "lightsail-wireguard"
+  AZ       = "us-west-2a"
+  OS       = "ubuntu_20_04"
+  Size     = "nano_2_0"
+  KeyBits  = "4096"
 }
