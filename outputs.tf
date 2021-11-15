@@ -15,6 +15,10 @@ output "port" {
   value = random_integer.wg_port.result
 }
 
-output "client_config" {
-  value = data.template_file.client_config.rendered
+output "router_config" {
+  value = data.template_file.router_config.rendered
+}
+
+output "phone_config" {
+  value = data.template_file.phone_config.rendered
 }

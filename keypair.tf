@@ -1,6 +1,6 @@
 resource "tls_private_key" "key" {
-  algorithm = "RSA"
-  rsa_bits  = local.KeySize
+  algorithm   = "RSA"
+	rsa_bits    = local.KeyBits
 }
 
 resource "aws_lightsail_key_pair" "key" {
