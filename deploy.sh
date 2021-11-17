@@ -29,10 +29,10 @@ export TF_VAR_PHONE_PUBLICKEY=$(cat keys/phone_publickey)
 # Deploy infrastructure
 terraform init
 terraform apply -auto-approve
-terraform output private_key > keys/wireguard_rsa
+terraform output -raw private_key > keys/wireguard_rsa
 chmod u+x keys/wireguard_rsa
 chmod 600 keys/wireguard_rsa
 mkdir -v config
-terraform output router_config > config/wg0-router.conf
-terraform output phone_config > config/wg0-phone.conf
+terraform output -raw router_config > config/wg0-router.conf
+terraform output -raw phone_config > config/wg0-phone.conf
 
