@@ -4,7 +4,7 @@ data "template_file" "router_config" {
   vars = {
     WG_CLIENT_PRIVATE_KEY = var.ROUTER_PRIVATEKEY
     WG_SERVER_PUBLIC_KEY  = var.SERVER_PUBLICKEY
-    SERVER_IP             = aws_lightsail_instance.wireguard.public_ip_address
+    SERVER_IP             = aws_lightsail_static_ip.wireguard.ip_address
     SERVER_PORT           = random_integer.wg_port.result
   }
 }
@@ -15,7 +15,7 @@ data "template_file" "phone_config" {
   vars = {
     WG_CLIENT_PRIVATE_KEY = var.PHONE_PRIVATEKEY
     WG_SERVER_PUBLIC_KEY  = var.SERVER_PUBLICKEY
-    SERVER_IP             = aws_lightsail_instance.wireguard.public_ip_address
+    SERVER_IP             = aws_lightsail_static_ip.wireguard.ip_address
     SERVER_PORT           = random_integer.wg_port.result
   }
 }
