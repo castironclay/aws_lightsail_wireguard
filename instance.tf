@@ -1,3 +1,12 @@
+resource "aws_lightsail_static_ip_attachment" "wireguard" {
+	static_ip_name = aws_lightsail_static_ip.wireguard.id
+	instance_name = aws_lightsail_instance.wireguard.id
+}
+
+resource "aws_lightsail_static_ip" "wireguard" {
+	name = "wireguard-static-ip"
+}
+
 resource "aws_lightsail_instance" "wireguard" {
   name              = local.name
   availability_zone = local.AZ
