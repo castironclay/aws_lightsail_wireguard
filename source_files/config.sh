@@ -18,7 +18,7 @@ apt-get update -y
 DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq
 echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
 echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
-apt-get install -y wireguard iptables-persistent
+apt-get install -y wireguard iptables-persistent fail2ban
 
 # Unbound setup
 apt-get install unbound unbound-host -y
@@ -128,4 +128,5 @@ iptables -A INPUT -s $WG_NETWORK/$LINK_NETMASK -p udp -m udp --dport 53 -m connt
 iptables -A FORWARD -i wg0 -o wg0 -m conntrack --ctstate NEW -j ACCEPT
 
 systemctl enable netfilter-persistent && netfilter-persistent save
+systemctl enable fail2ban
 reboot
